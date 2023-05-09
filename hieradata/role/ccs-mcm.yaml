@@ -35,6 +35,6 @@ profile::core::systemd::tmpfile:
 
 ccs_software::services:
   prod:
-    - "mmm"
     - "cluster-monitor"
     - "lockmanager"
+    - "mmm"

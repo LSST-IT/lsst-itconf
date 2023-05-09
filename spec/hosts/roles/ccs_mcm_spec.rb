@@ -10,6 +10,7 @@ describe "#{role} role" do
       %w[
         comcam-ccs
         auxtel-ccs
+        lsstcam-ccs
       ].each do |cluster|
         context "#{cluster} cluster" do
           lsst_sites.each do |site|
@@ -29,6 +30,8 @@ describe "#{role} role" do
               include_examples('ccs common', os_facts:)
               include_examples('x2go packages', os_facts:)
               include_examples('debugutils')
+
+              it { is_expected.to contain_class('ccs_sal') }
             end # host
           end # lsst_sites
         end # cluster

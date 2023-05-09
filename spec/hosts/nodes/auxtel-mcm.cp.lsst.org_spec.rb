@@ -17,7 +17,7 @@ describe 'auxtel-mcm.cp.lsst.org', :sitepp do
       end
       let(:node_params) do
         {
-          role: 'atsccs',
+          role: 'ccs-mcm',
           site: 'cp',
           cluster: 'auxtel-ccs',
         }
@@ -26,8 +26,14 @@ describe 'auxtel-mcm.cp.lsst.org', :sitepp do
       it { is_expected.to compile.with_all_deps }
 
       include_examples 'baremetal'
-      it { is_expected.to contain_class('nfs').with_server_enabled(false) }
-      it { is_expected.to contain_class('nfs').with_client_enabled(false) }
+
+      it { is_expected.to contain_class('Ccs_software::Service') }
+      it { is_expected.to contain_service('cluster-monitor') }
+      it { is_expected.to contain_service('kafka-broker-service') }
+      it { is_expected.to contain_service('localdb') }
+      it { is_expected.to contain_service('lockmanager') }
+      it { is_expected.to contain_service('mmm') }
+      it { is_expected.to contain_service('rest-server') }
     end # on os
   end # on_supported_os
 end # role

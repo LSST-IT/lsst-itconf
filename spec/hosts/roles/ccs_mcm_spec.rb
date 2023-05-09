@@ -27,7 +27,8 @@ describe "#{role} role" do
 
               include_examples('common', os_facts:, site:)
               include_examples('ccs common', os_facts:)
-              include_examples 'x2go packages', os_facts:
+              include_examples('x2go packages', os_facts:)
+              include_examples('debugutils')
             end # host
           end # lsst_sites
         end # cluster

@@ -1,6 +1,5 @@
 ---
 classes:
-  - "ntp"
   - "profile::core::common"
   - "profile::core::debugutils"
   - "profile::core::firewall"
@@ -12,8 +11,6 @@ classes:
 profile::core::common::manage_chrony: true
 profile::core::sysctl::rp_filter::enable: false
 profile::core::perfsonar::version: "5.0.8"
-chrony::service_enable: false
-chrony::service_ensure: "stopped"
 
 firewall::ensure: "running"
 profile::core::firewall::firewall:

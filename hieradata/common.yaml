@@ -566,8 +566,8 @@ restic::host: "s3.us-east-1.amazonaws.com"
 pi::config::reboot: false  # XXX this should be removed when pi role/profile refactoring is complete
 pi::cmdline::reboot: false  # XXX this should be removed when pi role/profile refactoring is complete
 
-rke2::release_series: "1.28"
-rke2::version: "1.28.12~rke2r1"
+rke2::release_series: "1.29"
+rke2::version: "1.29.9~rke2r1"
 rke2::versionlock: true
 rke2::config:
   server: "https://%{::cluster}.%{::site}.lsst.org:9345"

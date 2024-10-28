@@ -54,7 +54,7 @@ describe 'antu01.ls.lsst.org', :sitepp do
         )
       end
 
-      it { is_expected.to have_nm__connection_resource_count(5) }
+      it { is_expected.to have_nm__connection_resource_count(6) }
 
       %w[
         enp12s0f4u1u2c2
@@ -73,6 +73,7 @@ describe 'antu01.ls.lsst.org', :sitepp do
         it_behaves_like 'nm enabled interface'
         it_behaves_like 'nm dhcp interface'
         it_behaves_like 'nm ethernet interface'
+        it_behaves_like 'nm bridge slave interface', master: 'br2131'
       end
 
       context 'with enp65s0f0.2130' do
@@ -85,6 +86,14 @@ describe 'antu01.ls.lsst.org', :sitepp do
 
       context 'with br2130' do
         let(:interface) { 'br2130' }
+
+        it_behaves_like 'nm enabled interface'
+        it_behaves_like 'nm no-ip interface'
+        it_behaves_like 'nm bridge interface'
+      end
+
+      context 'with br2131' do
+        let(:interface) { 'br2131' }
 
         it_behaves_like 'nm enabled interface'
         it_behaves_like 'nm no-ip interface'

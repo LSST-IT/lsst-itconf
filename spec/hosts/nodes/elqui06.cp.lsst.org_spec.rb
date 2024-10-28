@@ -54,8 +54,8 @@ describe 'elqui06.cp.lsst.org', :sitepp do
       it do
         is_expected.to contain_class('rke2').with(
           node_type: 'agent',
-          release_series: '1.28',
-          version: '1.28.12~rke2r1'
+          release_series: '1.29',
+          version: '1.29.9~rke2r1'
         )
       end
 

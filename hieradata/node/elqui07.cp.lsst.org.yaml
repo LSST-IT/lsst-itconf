@@ -1,0 +1,6 @@
+---
+rke2::config:
+  node-label:
+    - "metallb/speaker=true"
+  node-taint:
+    - "metallb/speaker=true:NoExecute"  # https://github.com/rancher/rke2/issues/7152

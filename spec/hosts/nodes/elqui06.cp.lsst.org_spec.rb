@@ -32,7 +32,19 @@ describe 'elqui06.cp.lsst.org', :sitepp do
 
       it do
         expect(catalogue.resource('class', 'rke2')[:config]).to include(
-          'node-label' => ['role=storage-node']
+          'node-label' => include('role=storage-node')
+        )
+      end
+
+      it do
+        expect(catalogue.resource('class', 'rke2')[:config]).to include(
+          'node-label' => include('metallb/speaker=true')
+        )
+      end
+
+      it do
+        expect(catalogue.resource('class', 'rke2')[:config]).to include(
+          'node-taint' => ['metallb/speaker=true:NoExecute']
         )
       end
 

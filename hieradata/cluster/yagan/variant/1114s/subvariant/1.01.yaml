@@ -68,6 +68,21 @@ nm::connections:
         id: "1201"
         parent: "enp1s0f1"
       bridge-port: {}
+  enp1s0f1.1702:
+    content:
+      connection:
+        id: "enp1s0f1.1702"
+        uuid: "dc2b8fc9-b3f1-4657-891d-6bf15bdb896a"
+        type: "vlan"
+        interface-name: "enp1s0f1.1702"
+        master: "br1702"
+        slave-type: "bridge"
+      ethernet: {}
+      vlan:
+        flags: "1"
+        id: "1702"
+        parent: "enp1s0f1"
+      bridge-port: {}
   enp1s0f1.1800:
     content:
       connection:

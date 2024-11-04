@@ -1,37 +1,77 @@
 ---
-network::interfaces_hash:
-  em2:  # dds-auxtel
-    bootproto: "dhcp"
-    defroute: "no"
-    nozeroconf: "yes"
-    onboot: "yes"
-    type: "Ethernet"
-  em3:  # not connected
-    bootproto: "none"
-    onboot: "no"
-    type: "Ethernet"
-  em4:  # fqdn
-    bootproto: "dhcp"
-    defroute: "yes"
-    onboot: "yes"
-    type: "Ethernet"
-
-network::mroutes_hash:
-  em2:
-    routes:
-      "139.229.147.0/24": "139.229.170.254"
-      "139.229.166.0/24": "139.229.170.254"
-      "139.229.167.0/24": "139.229.170.254"
-      #"139.229.170.0/24": "139.229.170.254"
-      "139.229.178.0/24": "139.229.170.254"
+nm::connections:
+  eno1:  # lsst-daq interface
+    content:
+      connection:
+        id: "eno1"
+        uuid: "49b496dc-2ec0-48b4-9907-f025bf2d6907"
+        type: "ethernet"
+        interface-name: "eno1"
+        master: "lsst-daq"
+        slave-type: "bridge"
+      ethernet: {}
+      ethtool:
+        ring-rx: "4096"
+        ring-tx: "4096"
+      bridge-port: {}
+  lsst-daq:
+    content:
+      connection:
+        id: "lsst-daq"
+        uuid: "2ccf9a2a-bed7-6832-5c25-097862b4929f"
+        type: "bridge"
+        interface-name: "lsst-daq"
+      ethernet: {}
+      bridge:
+        stp: "false"
+      ipv4:
+        address1: "192.168.100.251/24"
+        method: "manual"
+      ipv6:
+        method: "disabled"
+      proxy: {}
+  eno2:
+    content:
+      connection:
+        id: "eno2"
+        uuid: "e5ad2870-9b07-4fe0-af1a-30f87f6b62d5"
+        type: "ethernet"
+        autoconnect: "false"
+        interface-name: "eno2"
+      ethernet: {}
+      ipv4:
+        method: "disabled"
+      ipv6:
+        method: "disabled"
+  eno3:
+    content:
+      connection:
+        id: "eno3"
+        uuid: "5dcbb5a8-3425-4dff-a339-7a29e0b3a6c1"
+        type: "ethernet"
+        autoconnect: "false"
+        interface-name: "eno3"
+      ethernet: {}
+      ipv4:
+        method: "disabled"
+      ipv6:
+        method: "disabled"
+  eno4:
+    content:
+      connection:
+        id: "eno4"
+        uuid: "ef4c2e90-5bf6-4b98-8663-588354f3335b"
+        type: "ethernet"
+        interface-name: "eno4"
+      ethernet: {}
+      ipv4:
+        method: "auto"
+      ipv6:
+        method: "disabled"
+      proxy: {}
 
 # Server configuration
 nfs::server_enabled: true
-# 139.229.146.0/24    antu
-# 139.229.160.0/24    cp general & yagan
-# 139.229.165.0/24    cp archive
-# 139.229.175.0/26    comcam-ccs
-# 139.229.175.128/25  auxtel-ccs
 nfs::nfs_v4_export_root_clients: >-
   %{facts.networking.ip}/32(ro,fsid=root,insecure,no_subtree_check,async,root_squash)
   139.229.146.0/24(ro,fsid=root,insecure,no_subtree_check,async,root_squash)

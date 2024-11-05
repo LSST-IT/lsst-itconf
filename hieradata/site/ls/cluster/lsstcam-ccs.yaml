@@ -7,3 +7,9 @@ ccs_software::service_email: "base-teststand-alerts-aaaaojwlqmczgqmavrwyopux5a@r
 
 ccs_monit::alert:
   - "base-teststand-alerts-aaaaojwlqmczgqmavrwyopux5a@rubin-obs.slack.com"
+
+s3daemon::instances:
+  ls-lsstcam:
+    s3_endpoint_url: "https://s3.ls.lsst.org"
+    port: 15570
+    image: "%{alias('s3daemon_default_image')}"

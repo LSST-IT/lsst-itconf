@@ -12,3 +12,13 @@ clustershell::groupmembers:
   all: {group: "all", member: "auxtel-fp01,auxtel-mcm"}
 
 postfix::relayhost: "[mail.lsst.org]:submission"
+
+s3daemon::instances:
+  tu-latiss:
+    s3_endpoint_url: "https://s3.tu.lsst.org"
+    port: 15570
+    image: "%{alias('s3daemon_default_image')}"
+  s3dfrgw-latiss:
+    s3_endpoint_url: "https://s3dfrgw.slac.stanford.edu"
+    port: 15580
+    image: "%{alias('s3daemon_default_image')}"

@@ -12,3 +12,13 @@ clustershell::groupmembers:
   vw: {group: "vw", member: "lsstcam-vw[01-04]"}
 
 profile::ccs::monitoring::mrtg: true
+
+s3daemon::instances:
+  cp-lsstcam:
+    s3_endpoint_url: "https://s3.cp.lsst.org"
+    port: 15570
+    image: "%{alias('s3daemon_default_image')}"
+  sdfembs3-lsstcam:
+    s3_endpoint_url: "https://sdfembs3.sdf.slac.stanford.edu"
+    port: 15580
+    image: "%{alias('s3daemon_default_image')}"

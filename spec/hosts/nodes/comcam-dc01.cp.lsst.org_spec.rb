@@ -20,12 +20,28 @@ describe 'comcam-dc01.cp.lsst.org', :sitepp do
       let(:node_params) do
         {
           role: 'ccs-dc',
-          cluster: 'lsstcam-ccs',
+          cluster: 'comcam-ccs',
           site: 'cp',
         }
       end
 
       it { is_expected.to compile.with_all_deps }
+
+      it do
+        is_expected.to contain_s3daemon__instance('cp-comcam').with(
+          s3_endpoint_url: 'https://s3.cp.lsst.org',
+          port: 15_570,
+          image: 'ghcr.io/lsst-dm/s3daemon:sha-e117c22'
+        )
+      end
+
+      it do
+        is_expected.to contain_s3daemon__instance('sdfembs3-comcam').with(
+          s3_endpoint_url: 'https://sdfembs3.sdf.slac.stanford.edu',
+          port: 15_580,
+          image: 'ghcr.io/lsst-dm/s3daemon:sha-e117c22'
+        )
+      end
 
       include_examples 'baremetal'
       include_context 'with nm interface'

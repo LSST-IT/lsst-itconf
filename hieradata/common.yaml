@@ -559,6 +559,8 @@ profile::core::firewall::firewall:
     proto: "all"
     jump: "reject"
 
+quadlets::purge_quadlet_dir: true
+
 restic::bucket: "rubin-bm-backups/%{facts.networking.fqdn}"
 restic::enable_backup: true
 restic::host: "s3.us-east-1.amazonaws.com"

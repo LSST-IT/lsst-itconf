@@ -81,6 +81,9 @@ profile::core::firewall::firewall:
 profile::core::docker::version: "24.0.9"
 
 s3daemon::instances:
-  ruka:
+  ruka-latiss:
     s3_endpoint_url: "https://s3.ruka.dev.lsst.org"
     port: 15570
+  ruka-lsstcam:
+    s3_endpoint_url: "https://s3.ruka.dev.lsst.org"
+    port: 15572

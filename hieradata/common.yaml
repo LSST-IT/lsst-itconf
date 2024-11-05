@@ -104,6 +104,9 @@ lookup_options:
   rke2::config:
     merge:
       strategy: "deep"
+  s3daemon::instances:
+    merge:
+      strategy: "deep"
 
 timezone::timezone: "UTC"
 chrony::cmdport: 0

@@ -12,3 +12,9 @@ clustershell::groupmembers:
   all: {group: "all", member: "auxtel-fp01,auxtel-mcm"}
 
 postfix::relayhost: "[mail.lsst.org]:submission"
+
+s3daemon::instances:
+  tu-latiss:
+    s3_endpoint_url: "https://s3.tu.lsst.org"
+    port: 15570
+    image: "ghcr.io/lsst-dm/s3daemon:sha-e117c22"

@@ -27,6 +27,14 @@ describe 'auxtel-fp01.tu.lsst.org', :sitepp do
 
       it { is_expected.to compile.with_all_deps }
 
+      it do
+        is_expected.to contain_s3daemon__instance('tu-latiss').with(
+          s3_endpoint_url: 'https://s3.tu.lsst.org',
+          port: 15_570,
+          image: 'ghcr.io/lsst-dm/s3daemon:sha-e117c22'
+        )
+      end
+
       include_examples 'baremetal'
       include_context 'with nm interface'
 

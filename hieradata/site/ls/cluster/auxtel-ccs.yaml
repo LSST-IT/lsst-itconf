@@ -13,3 +13,13 @@ clustershell::groupmembers:
   #hcu: {group: "hcu", member: "auxtel-hcu01"}
   #all: {group: "all", member: "@misc,@hcu"}
   all: {group: "all", member: "@misc"}
+
+s3daemon::instances:
+  ls-latiss:
+    s3_endpoint_url: "https://s3.ls.lsst.org"
+    port: 15570
+    image: "ghcr.io/lsst-dm/s3daemon:sha-e117c22"
+  s3dfrgw-latiss:
+    s3_endpoint_url: "https://s3dfrgw.slac.stanford.edu"
+    port: 15580
+    image: "ghcr.io/lsst-dm/s3daemon:sha-e117c22"

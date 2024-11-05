@@ -12,3 +12,8 @@ clustershell::groupmembers:
   all: {group: "all", member: "comcam-dc01,comcam-fp01,comcam-mcm"}
 
 postfix::relayhost: "[mail.lsst.org]:submission"
+
+s3daemon::instances:
+  pillan-comcam:
+    s3_endpoint_url: "https://s3.tu.lsst.org"
+    port: 15571

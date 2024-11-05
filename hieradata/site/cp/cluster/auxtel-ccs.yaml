@@ -1,0 +1,10 @@
+---
+s3daemon::instances:
+  cp-latiss:
+    s3_endpoint_url: "https://s3.cp.lsst.org"
+    port: 15570
+    image: "ghcr.io/lsst-dm/s3daemon:sha-e117c22"
+  s3dfrgw-latiss:
+    s3_endpoint_url: "https://s3dfrgw.slac.stanford.edu"
+    port: 15580
+    image: "ghcr.io/lsst-dm/s3daemon:sha-e117c22"

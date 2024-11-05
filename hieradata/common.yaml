@@ -107,6 +107,9 @@ lookup_options:
   cni::plugins::enable:
     merge:
       strategy: "deep"
+  s3daemon::instances:
+    merge:
+      strategy: "deep"
 
 timezone::timezone: "UTC"
 chrony::cmdport: 0

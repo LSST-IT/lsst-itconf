@@ -16,4 +16,12 @@ shared_examples 'lsstcam-dc.cp' do
       image: 'ghcr.io/lsst-dm/s3daemon:sha-e117c22'
     )
   end
+
+  it do
+    is_expected.to contain_s3daemon__instance('elqui-lsstcam').with(
+      s3_endpoint_url: 'https://s3.elqui.cp.lsst.org',
+      port: 15_590,
+      image: 'ghcr.io/lsst-dm/s3daemon:sha-e117c22'
+    )
+  end
 end

@@ -6,3 +6,6 @@ s3daemon::instances:
   sdfembs3-lsstcam:
     aws_access_key_id: "%{alias('s3daemon_test::aws_access_key_id')}"
     aws_secret_access_key: "%{alias('s3daemon_test::aws_secret_access_key')}"
+  elqui-lsstcam:
+    aws_access_key_id: "%{alias('s3daemon_test::aws_access_key_id')}"
+    aws_secret_access_key: "%{alias('s3daemon_test::aws_secret_access_key')}"

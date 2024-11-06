@@ -4,3 +4,4 @@ clustershell::groupmembers:
 profile::core::k8snode::enable_dhcp: true
 profile::core::ospl::enable_rundir: true
 tuned::active_profile: "latency-performance"
+cni::plugins::enable: ["macvlan", "static"]

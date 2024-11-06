@@ -104,6 +104,9 @@ lookup_options:
   rke2::config:
     merge:
       strategy: "deep"
+  cni::plugins::enable:
+    merge:
+      strategy: "deep"
 
 timezone::timezone: "UTC"
 chrony::cmdport: 0

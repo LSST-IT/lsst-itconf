@@ -57,7 +57,7 @@ describe 'kueyen01.dev.lsst.org', :sitepp do
         is_expected.to contain_class('cni::plugins').with(
           version: '1.2.0',
           checksum: 'f3a841324845ca6bf0d4091b4fc7f97e18a623172158b72fc3fdcdb9d42d2d37',
-          enable: ['macvlan']
+          enable: %w[macvlan static]
         )
       end
 

@@ -126,7 +126,7 @@ describe 'foreman.cp.lsst.org', :sitepp do
         is_expected.to contain_dhcp__pool('CDS-ARCH-DDS').with(
           network: '139.229.166.0',
           mask: '255.255.255.0',
-          range: ['139.229.166.200 139.229.166.249'],
+          range: ['139.229.166.100 139.229.166.249'],
           gateway: '139.229.166.254',
           static_routes: [
             { 'network' => '139.229.147', 'mask' => '24', 'gateway' => '139.229.166.254' },

@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'lsstcam-dc01.ls.lsst.org', :sitepp do
   on_supported_os.each do |os, os_facts|
-    next if os =~ %r{centos-7-x86_64}
+    next unless os =~ %r{almalinux-9-x86_64}
 
     context "on #{os}" do
       let(:facts) do
@@ -20,14 +20,22 @@ describe 'lsstcam-dc01.ls.lsst.org', :sitepp do
       let(:node_params) do
         {
           role: 'ccs-dc',
-          site: 'ls',
           cluster: 'lsstcam-ccs',
+          site: 'ls',
           variant: '1114s',
           subvariant: 'daq-lhn',
         }
       end
 
       it { is_expected.to compile.with_all_deps }
+
+      it do
+        is_expected.to contain_s3daemon__instance('ls-lsstcam').with(
+          s3_endpoint_url: 'https://s3.ls.lsst.org',
+          port: 15_570,
+          image: 'ghcr.io/lsst-dm/s3daemon:sha-e117c22'
+        )
+      end
 
       include_examples 'baremetal'
       include_context 'with nm interface'

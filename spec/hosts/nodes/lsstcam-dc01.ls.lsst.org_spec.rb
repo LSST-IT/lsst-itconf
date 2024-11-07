@@ -33,7 +33,7 @@ describe 'lsstcam-dc01.ls.lsst.org', :sitepp do
         is_expected.to contain_s3daemon__instance('ls-lsstcam').with(
           s3_endpoint_url: 'https://s3.ls.lsst.org',
           port: 15_570,
-          image: 'ghcr.io/lsst-dm/s3daemon:sha-e117c22'
+          image: 'ghcr.io/lsst-dm/s3daemon:sha-57e1aa9'
         )
       end
 

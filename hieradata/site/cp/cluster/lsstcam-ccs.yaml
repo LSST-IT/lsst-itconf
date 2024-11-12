@@ -22,7 +22,38 @@ s3daemon::instances:
     s3_endpoint_url: "https://sdfembs3.sdf.slac.stanford.edu"
     port: 15580
     image: "%{alias('s3daemon_default_image')}"
+    env:
+      S3DAEMON_HOST: ""
+  sdfembs3-lsstcam-go:
+    s3_endpoint_url: "https://sdfembs3.sdf.slac.stanford.edu"
+    port: 15581
+    image: "ghcr.io/lsst-dm/s3nd:sha-1a94702"
+    env:
+      S3ND_ENDPOINT_URL: "https://sdfembs3.sdf.slac.stanford.edu"
+      S3ND_PORT: "15581"
+      AWS_DEFAULT_REGION: "lfa"
+      S3ND_UPLOAD_TIMEOUT: "60s"
+      S3ND_QUEUE_TIMEOUT: "60s"
+      S3ND_UPLOAD_MAX_PARALLEL: "25"
+      S3ND_UPLOAD_TRIES: "10"
+      S3ND_UPLOAD_PARTSIZE: "50Mi"  # larger than test file size
+      S3ND_UPLOAD_BWLIMIT: "160Mi"
+      S3ND_UPLOAD_WRITE_BUFFER_SIZE: "25Mi"
   elqui-lsstcam:  # XXX temporary for testing
     s3_endpoint_url: "https://s3.elqui.cp.lsst.org"
     port: 15590
     image: "%{alias('s3daemon_default_image')}"
+    env:
+      S3DAEMON_HOST: ""
+  elqui-lsstcam-go:
+    s3_endpoint_url: "https://s3.elqui.cp.lsst.org"
+    port: 15591
+    image: "ghcr.io/lsst-dm/s3nd:sha-1a94702"
+    env:
+      S3ND_ENDPOINT_URL: "https://s3.elqui.cp.lsst.org"
+      S3ND_PORT: "15591"
+      AWS_DEFAULT_REGION: "lfa"
+      S3ND_UPLOAD_TIMEOUT: "3s"
+      S3ND_QUEUE_TIMEOUT: "60s"
+      S3ND_UPLOAD_MAX_PARALLEL: "25"
+      S3ND_UPLOAD_TRIES: "10"

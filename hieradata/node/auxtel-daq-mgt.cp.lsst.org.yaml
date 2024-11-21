@@ -1,33 +1,100 @@
 ---
-network::interfaces_hash:
-  em1:  # fqdn
-    bootproto: "dhcp"
-    defroute: "yes"
-    onboot: "yes"
-    type: "Ethernet"
-  em2:  # 192.168.101.0/24
-    bootproto: "none"
-    ipaddress: "192.168.101.1"
-    netmask: "255.255.255.0"
-    onboot: "yes"
-    type: "Ethernet"
-  # 2020-12-01 -- this interface is currently down and @gregg and @josh don't
-  # know its purpose. This is possibly left over from a test and can be removed.2
-  em3:  # 192.168.102.0/24
-    bootproto: "none"
-    ipaddress: "192.168.102.1"
-    netmask: "255.255.255.0"
-    onboot: "yes"
-    type: "Ethernet"
-  em4:  # not connected
-    bootproto: "none"
-    onboot: "no"
-    type: "Ethernet"
-  # p3p1 -> lsst-daq -- 192.168.100.0/24
-  p3p2:  # not connected
-    bootproto: "none"
-    onboot: "no"
-    type: "Ethernet"
+nm::connections:
+  eno1:  #fqdn
+    content:
+      connection:
+        id: "eno1"
+        uuid: "dc8a3070-077e-39f1-a6d3-59168a33cc0a"
+        type: "ethernet"
+        interface-name: "eno1"
+      ethernet: {}
+      ipv4:
+        method: "auto"
+      ipv6:
+        method: "disabled"
+      proxy: {}
+  eno2:  #  192.168.101.0/24 Shelf-Manager Interface
+    content:
+      connection:
+        id: "eno2"
+        uuid: "1a3fe7f5-ec03-3ea0-899c-d2fa430cdae3"
+        type: "ethernet"
+        interface-name: "eno2"
+      ethernet: {}
+      ipv4:
+        address1: "192.168.101.1/24"
+        method: "manual"
+      ipv6:
+        method: "disabled"
+  eno3:
+    content:
+      connection:
+        id: "eno3"
+        uuid: "927d93a1-605c-3126-b6c5-ae9c921bd13e"
+        type: "ethernet"
+        autoconnect: "false"
+        interface-name: "eno3"
+      ethernet: {}
+      ipv4:
+        method: "disabled"
+      ipv6:
+        method: "disabled"
+  eno4:
+    content:
+      connection:
+        id: "eno4"
+        uuid: "e68e1752-ac7e-3569-ac8d-aaeb37f0beb9"
+        type: "ethernet"
+        autoconnect: "false"
+        interface-name: "eno4"
+      ethernet: {}
+      ipv4:
+        method: "disabled"
+      ipv6:
+        method: "disabled"
+  enp4s0f0:  # lsst-daq interface
+    content:
+      connection:
+        id: "enp4s0f0"
+        uuid: "d103921c-aea8-3d39-ba5a-91378f7ca47d"
+        type: "ethernet"
+        interface-name: "enp4s0f0"
+        master: "lsst-daq"
+        slave-type: "bridge"
+      ethernet: {}
+      ethtool:
+        ring-rx: "4096"
+        ring-tx: "4096"
+      bridge-port: {}
+  lsst-daq:
+    content:
+      connection:
+        id: "lsst-daq"
+        uuid: "d5642f16-7bf7-7d4d-de5a-25e7d7c355a4"
+        type: "bridge"
+        interface-name: "lsst-daq"
+      ethernet: {}
+      bridge:
+        stp: "false"
+      ipv4:
+        address1: "192.168.100.1/24"
+        method: "manual"
+      ipv6:
+        method: "disabled"
+      proxy: {}
+  enp4s0f1:
+    content:
+      connection:
+        id: "enp4s0f1"
+        uuid: "543d45bb-26a4-327c-89e7-92c2450905e0"
+        type: "ethernet"
+        autoconnect: "false"
+        interface-name: "enp4s0f1"
+      ethernet: {}
+      ipv4:
+        method: "disabled"
+      ipv6:
+        method: "disabled"
 
 hosts::entries:
   auxtel-sm:

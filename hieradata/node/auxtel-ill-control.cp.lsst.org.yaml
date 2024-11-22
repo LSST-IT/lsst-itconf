@@ -1,0 +1,49 @@
+---
+nm::connections:
+  enp1s0:  # fqdn
+    content:
+      connection:
+        id: "enp1s0"
+        uuid: "8515293a-ae5d-3af2-a8d4-949459e358a3"
+        type: "ethernet"
+        interface-name: "enp1s0"
+      ethernet: {}
+      ipv4:
+        method: "auto"
+      ipv6:
+        method: "disabled"
+      proxy: {}
+  enp2s0:  # dds-auxtel
+    content:
+      connection:
+        id: "enp2s0"
+        uuid: "bf99bc41-912e-40de-9213-b019103accee"
+        type: "ethernet"
+        interface-name: "enp2s0"
+        master: "dds"
+        slave-type: "bridge"
+      ethernet: {}
+      bridge-port: {}
+  dds:
+    content:
+      connection:
+        id: "dds"
+        uuid: "04a2ae02-7ab4-4c14-8f60-ce98488faeeb"
+        type: "bridge"
+        interface-name: "dds"
+      ethernet: {}
+      bridge:
+        stp: false
+      ipv4:
+        address1: "139.229.170.14/24,139.229.170.254"
+        dns: "139.229.160.53;139.229.160.54;139.229.160.55;"
+        dns-search: "cp.lsst.org;"
+        method: "manual"
+        never-default: "true"
+        route1: "139.229.147.0/24,139.229.170.254"
+        route2: "139.229.166.0/24,139.229.170.254"
+        route3: "139.229.167.0/24,139.229.170.254"
+        route4: "139.229.178.0/24,139.229.170.254"
+      ipv6:
+        method: "disabled"
+      proxy: {}

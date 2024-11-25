@@ -70,7 +70,7 @@ describe 'elqui01.cp.lsst.org', :sitepp do
         )
       end
 
-      it { is_expected.to have_nm__connection_resource_count(12) }
+      it { is_expected.to have_nm__connection_resource_count(14) }
 
       %w[
         enp13s0f4u1u2c2
@@ -107,6 +107,7 @@ describe 'elqui01.cp.lsst.org', :sitepp do
       end
 
       %w[
+        1800
         1801
         1802
         1803
@@ -122,6 +123,7 @@ describe 'elqui01.cp.lsst.org', :sitepp do
       end
 
       %w[
+        br1800
         br1801
         br1802
         br1803

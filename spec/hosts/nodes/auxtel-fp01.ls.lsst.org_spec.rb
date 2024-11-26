@@ -9,7 +9,7 @@ describe 'auxtel-fp01.ls.lsst.org', :sitepp do
     context "on #{os}" do
       let(:node_params) do
         {
-          role: 'atsdaq',
+          role: 'auxtel-fp',
           site: 'ls',
           cluster: 'auxtel-ccs',
           variant: '1114s',

@@ -20,7 +20,7 @@ describe 'auxtel-fp01.cp.lsst.org', :sitepp do
       end
       let(:node_params) do
         {
-          role: 'atsdaq',
+          role: 'auxtel-fp',
           cluster: 'auxtel-ccs',
           site: 'cp',
         }

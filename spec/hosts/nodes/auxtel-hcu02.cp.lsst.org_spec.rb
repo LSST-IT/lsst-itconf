@@ -20,7 +20,8 @@ describe 'auxtel-hcu02.cp.lsst.org', :sitepp do
       end
       let(:node_params) do
         {
-          role: 'atshcu',
+          role: 'auxtel-hcu',
+          cluster: 'auxtel-ccs',
           site: 'cp',
         }
       end

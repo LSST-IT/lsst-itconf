@@ -3,6 +3,7 @@ classes:
   - "profile::core::common"
   - "profile::core::docker"
   - "profile::core::gpio"
+  - "profile::pi::add_usb"
   - "profile::pi::ftdi"
   - "profile::pi::pigpio"
   - "profile::ts::dco"

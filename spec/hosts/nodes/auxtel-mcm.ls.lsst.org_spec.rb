@@ -19,7 +19,7 @@ describe 'auxtel-mcm.ls.lsst.org', :sitepp do
       end
       let(:node_params) do
         {
-          role: 'atsccs',
+          role: 'ccs-mcm',
           site: 'ls',
           cluster: 'auxtel-ccs',
           variant: '1114s',
@@ -87,9 +87,10 @@ describe 'auxtel-mcm.ls.lsst.org', :sitepp do
       it { is_expected.to contain_file('/etc/ccs/setup-sal5').with_content(%r{^export LSST_DDS_PARTITION_PREFIX=base}) }
 
       it { is_expected.to contain_class('Ccs_software::Service') }
-      it { is_expected.to contain_service('mmm') }
       it { is_expected.to contain_service('cluster-monitor') }
       it { is_expected.to contain_service('localdb') }
+      it { is_expected.to contain_service('lockmanager') }
+      it { is_expected.to contain_service('mmm') }
       it { is_expected.to contain_service('rest-server') }
 
       it do

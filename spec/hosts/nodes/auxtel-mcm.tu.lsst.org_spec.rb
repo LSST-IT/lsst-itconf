@@ -19,7 +19,7 @@ describe 'auxtel-mcm.tu.lsst.org', :sitepp do
       end
       let(:node_params) do
         {
-          role: 'atsccs',
+          role: 'ccs-mcm',
           site: 'tu',
           cluster: 'auxtel-ccs',
         }
@@ -57,6 +57,11 @@ describe 'auxtel-mcm.tu.lsst.org', :sitepp do
         it { expect(nm_keyfile['ipv4']['route1']).to eq('140.252.147.48/28,140.252.147.17') }
         it { expect(nm_keyfile['ipv4']['route2']).to eq('140.252.147.128/27,140.252.147.17') }
       end
+
+      it { is_expected.to contain_class('Ccs_software::Service') }
+      it { is_expected.to contain_service('cluster-monitor') }
+      it { is_expected.to contain_service('lockmanager') }
+      it { is_expected.to contain_service('mmm') }
     end # on os
   end # on_supported_os
 end

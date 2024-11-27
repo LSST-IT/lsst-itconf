@@ -5,8 +5,5 @@ ccs_software::global_properties:
 
 ccs_software::services:
   prod:
-    - "mmm"
-    - "cluster-monitor"
     - "localdb"
-    - "lockmanager"
     - "rest-server"

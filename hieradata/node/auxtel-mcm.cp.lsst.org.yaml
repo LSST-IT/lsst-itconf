@@ -1,42 +1,78 @@
 ---
-network::interfaces_hash:
-  em1:  # dds
-    bootproto: "dhcp"
-    defroute: "no"
-    nozeroconf: "yes"
-    onboot: "yes"
-    type: "Ethernet"
-  em2:  # not connected
-    bootproto: "none"
-    onboot: "no"
-    type: "Ethernet"
-  em3:  # not connected
-    bootproto: "none"
-    onboot: "no"
-    type: "Ethernet"
-  em4:  # fqdn *and* ccs-auxtel
-    bootproto: "dhcp"
-    defroute: "yes"
-    nozeroconf: "yes"
-    onboot: "yes"
-    type: "Ethernet"
-  p3p1:  # not connected
-    bootproto: "none"
-    onboot: "no"
-    type: "Ethernet"
-  p3p2:  # not connected
-    bootproto: "none"
-    onboot: "no"
-    type: "Ethernet"
-
-network::mroutes_hash:
-  em1:
-    routes:
-      "139.229.147.0/24": "139.229.170.254"
-      "139.229.166.0/24": "139.229.170.254"
-      "139.229.167.0/24": "139.229.170.254"
-      #"139.229.170.0/24": "139.229.170.254"
-      "139.229.178.0/24": "139.229.170.254"
+nm::connections:
+  eno1:  # auxtel-dds | 139.229.170.0/24
+    content:
+      connection:
+        id: "eno1"
+        uuid: "a171f4dc-0de7-37af-99aa-dc4c4afdb34f"
+        type: "ethernet"
+        interface-name: "eno1"
+        master: "dds"
+        slave-type: "bridge"
+      ethernet: {}
+      bridge-port: {}
+  dds:
+    content:
+      connection:
+        id: "dds"
+        uuid: "dca22ce5-3111-4f5f-9e9e-d3d11ecaec33"
+        type: "bridge"
+        interface-name: "dds"
+      ethernet: {}
+      bridge:
+        stp: false
+      ipv4:
+        address1: "139.229.170.33/24"
+        dns: "139.229.160.53;139.229.160.54;139.229.160.55;"
+        dns-search: "cp.lsst.org;"
+        method: "manual"
+        never-default: "true"
+        route1: "139.229.147.0/24,139.229.170.254"
+        route2: "139.229.166.0/24,139.229.170.254"
+        route3: "139.229.167.0/24,139.229.170.254"
+        route4: "139.229.178.0/24,139.229.170.254"
+      ipv6:
+        method: "disabled"
+      proxy: {}
+  eno2:
+    content:
+      connection:
+        id: "eno2"
+        uuid: "76c23677-ec04-337a-9bc0-fbac161c22b9"
+        type: "ethernet"
+        autoconnect: "false"
+        interface-name: "eno2"
+      ethernet: {}
+      ipv4:
+        method: "disabled"
+      ipv6:
+        method: "disabled"
+  eno3:
+    content:
+      connection:
+        id: "eno3"
+        uuid: "c121aa8b-a931-369c-b911-3da1b329fedd"
+        type: "ethernet"
+        autoconnect: "false"
+        interface-name: "eno3"
+      ethernet: {}
+      ipv4:
+        method: "disabled"
+      ipv6:
+        method: "disabled"
+  eno4:  # fqdn
+    content:
+      connection:
+        id: "eno4"
+        uuid: "61d94ce5-2153-3cea-b1aa-4ead592cdad8"
+        type: "ethernet"
+        interface-name: "eno4"
+      ethernet: {}
+      ipv4:
+        method: "auto"
+      ipv6:
+        method: "disabled"
+      proxy: {}
 
 ccs_software::global_properties:
   - "org.hibernate.engine.internal.level=WARNING"

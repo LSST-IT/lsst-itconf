@@ -35,6 +35,7 @@ describe "#{role} role" do
           include_examples 'pigpio'
           include_examples 'ftdi'
           include_examples 'dco'
+          include_examples 'add_usb'
         end # host
       end # lsst_sites
     end # on os

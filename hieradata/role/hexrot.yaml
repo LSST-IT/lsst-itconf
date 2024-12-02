@@ -20,7 +20,6 @@ files:
     subscribe:
       - "Package[runHexEui]"
       - "Package[runRotEui]"
-      - "Package[runM2Cntlr]"
 
 # / on hexrot.cp was formated with xfs fstype=0 (long, long, long ago) and is
 # not compatible with overlayfs[2]

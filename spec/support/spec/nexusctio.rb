@@ -3,7 +3,7 @@
 shared_examples 'nexusctio' do
   it do
     is_expected.to contain_yumrepo('nexus-ctio').with(
-      'baseurl' => 'http://cagvm3.ctio.noao.edu/nexus/repository/labview-rpm/rubin/',
+      'baseurl' => 'https://repo-nexus.lsst.org/nexus/repository/ts_yum/releases',
       'gpgcheck' => false
     )
   end

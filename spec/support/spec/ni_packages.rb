@@ -4,7 +4,6 @@ shared_examples 'ni_packages' do
   all_packages = [
     'runHexEui',
     'runRotEui',
-    'runM2Cntlr',
     'git',
     'mlocate',
     'wget',
@@ -24,6 +23,4 @@ shared_examples 'ni_packages' do
   all_packages.each do |pkg|
     it { is_expected.to contain_package(pkg) }
   end
-
-  it { is_expected.to contain_host('cagvm3.ctio.noao.edu').with(ip: '139.229.3.76') }
 end

@@ -72,7 +72,7 @@ profile::ts::nexusctio::repos:
     ensure: "present"
     descr: "CTIO Nexus Repository"
     enabled: false
-    baseurl: "http://cagvm3.ctio.noao.edu/nexus/repository/labview-rpm/rubin/"
+    baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/releases"
     gpgcheck: false
     target: "/etc/yum.repos.d/nexus-ctio.repo"
   "gpgrubin":

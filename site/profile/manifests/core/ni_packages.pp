@@ -5,7 +5,6 @@ class profile::core::ni_packages {
   $hexrot_packages = [
     'runHexEui',
     'runRotEui',
-    'runM2Cntlr',
   ]
   $packages = [
     'git',
@@ -28,7 +27,4 @@ class profile::core::ni_packages {
     install_options => ['--enablerepo','nexus-ctio'];
   }
   ensure_packages($packages)
-  host { 'cagvm3.ctio.noao.edu':
-    ip => '139.229.3.76',
-  }
 }

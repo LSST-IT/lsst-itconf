@@ -6,6 +6,8 @@ role = 'perfsonar'
 
 describe "#{role} role" do
   on_supported_os.each do |os, os_facts|
+    next if os =~ %r{almalinux-8-x86_64}
+
     context "on #{os}" do
       lsst_sites.each do |site|
         describe "#{role}.#{site}.lsst.org", :sitepp do

@@ -33,6 +33,8 @@ clustershell::groupmembers:
   hcu: {group: "hcu", member: "auxtel-hcu01"}
   all: {group: "all", member: "@misc,@hcu"}
 
+ccs_database::database: "atsccsdb"
+
 ccs_monit::alert:
   - "auxtel-ccs-alerts-aaaaoikgy7stloxmg54kii7uwi@rubin-obs.slack.com"
 

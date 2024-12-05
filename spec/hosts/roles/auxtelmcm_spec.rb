@@ -22,7 +22,6 @@ describe "#{role} role" do
 
           include_examples('common', os_facts:, site:)
           include_examples('ccs common', os_facts:)
-          include_examples 'auxtelmcm'
         end # host
       end # lsst_sites
     end # on os

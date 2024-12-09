@@ -105,6 +105,7 @@ describe 'pillan01.tu.lsst.org', :sitepp do
         it_behaves_like 'nm enabled interface'
         it_behaves_like 'nm dhcp interface'
         it_behaves_like 'nm bond interface'
+        it { expect(nm_keyfile['bond']['xmit_hash_policy']).to eq('layer3+4') }
       end
 
       Hash[*%w[

@@ -30,10 +30,7 @@ nfs::client_mounts:
     atboot: true
 
 ccs_software::services:
-  ## FIXME this should be changed to prod, and a local systemctl override
-  ## used to get the dev version.
-  dev:
-    - "ats-power"
   prod:
     - "ats"
+    - "ats-power"
     - "bonn-shutter"

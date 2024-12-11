@@ -34,3 +34,4 @@ nm::connections:
 ccs_software::services:
   prod:
     - "chiller"
+    - "refrig"

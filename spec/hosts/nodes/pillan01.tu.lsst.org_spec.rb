@@ -19,34 +19,53 @@ describe 'pillan01.tu.lsst.org', :sitepp do
       end
       let(:node_params) do
         {
-          role: 'rke',
-          site: 'tu',
+          role: 'rke2server',
           cluster: 'pillan',
+          site: 'tu',
         }
       end
 
       it { is_expected.to compile.with_all_deps }
 
-      include_examples 'docker', docker_version: '24.0.9'
       include_examples 'baremetal'
       include_context 'with nm interface'
       include_examples 'ceph cluster'
+
+      it do
+        expect(catalogue.resource('class', 'rke2')[:config]).to include(
+          'node-label' => ['role=storage-node']
+        )
+      end
 
       it do
         is_expected.to contain_class('profile::core::sysctl::rp_filter').with_enable(false)
       end
 
       it do
-        is_expected.to contain_class('profile::core::rke').with(
-          version: '1.6.2'
+        is_expected.to contain_class('clustershell').with(
+          groupmembers: {
+            'pillan' => {
+              'group' => 'pillan',
+              'member' => 'pillan[01-09]',
+            },
+          }
         )
       end
 
       it do
-        is_expected.to contain_class('cni::plugins').with(
-          version: '1.2.0',
-          checksum: 'f3a841324845ca6bf0d4091b4fc7f97e18a623172158b72fc3fdcdb9d42d2d37',
-          enable: ['macvlan']
+        is_expected.to contain_class('rke2').with(
+          node_type: 'server',
+          release_series: '1.29',
+          version: '1.29.9~rke2r1'
+        )
+      end
+
+      it do
+        expect(catalogue.resource('class', 'nm')[:conf]).to include(
+          'device' => {
+            'keep-configuration' => 'no',
+            'allowed-connections' => 'except:origin:nm-initrd-generator',
+          }
         )
       end
 
@@ -86,6 +105,7 @@ describe 'pillan01.tu.lsst.org', :sitepp do
         it_behaves_like 'nm enabled interface'
         it_behaves_like 'nm dhcp interface'
         it_behaves_like 'nm bond interface'
+        it { expect(nm_keyfile['bond']['xmit_hash_policy']).to eq('layer3+4') }
       end
 
       Hash[*%w[

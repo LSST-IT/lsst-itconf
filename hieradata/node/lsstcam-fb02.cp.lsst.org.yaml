@@ -29,6 +29,3 @@ nm::connections:
         method: "disabled"
       ipv6:
         method: "disabled"
-
-ccs_hcu::canbus: true
-ccs_hcu::aiousb: true

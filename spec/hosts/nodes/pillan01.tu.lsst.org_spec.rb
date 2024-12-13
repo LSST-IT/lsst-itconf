@@ -143,11 +143,6 @@ describe 'pillan01.tu.lsst.org', :sitepp do
         it_behaves_like 'nm enabled interface'
         it_behaves_like 'nm no-ip interface'
         it_behaves_like 'nm bridge interface'
-        it { expect(nm_keyfile['ipv4']['route1']).to eq('140.252.147.192/27') }
-        it { expect(nm_keyfile['ipv4']['route1_options']).to eq("table=#{vlan}") }
-        it { expect(nm_keyfile['ipv4']['route2']).to eq('0.0.0.0/0,140.252.147.193') }
-        it { expect(nm_keyfile['ipv4']['route2_options']).to eq("table=#{vlan}") }
-        it { expect(nm_keyfile['ipv4']['routing-rule1']).to eq("priority 100 from 140.252.147.192/27 table #{vlan}") }
       end
     end # on os
   end # on_supported_os

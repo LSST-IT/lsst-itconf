@@ -87,6 +87,10 @@ nfs::nfs_exports_global:
       139.229.165.0/24(ro,nohide,insecure,no_subtree_check,async,root_squash)
       139.229.175.128/25(ro,nohide,insecure,no_subtree_check,async,root_squash)
 
+hosts::entries:
+  sdfembs3.sdf.slac.stanford.edu:
+    ip: "172.24.7.249"
+
 nfs::client_enabled: true
 nfs::client_mounts:
   /net/self/data:

@@ -1,9 +1,9 @@
 ---
 classes:
+  - "ccs_database"
   - "ccs_sal"
   - "profile::ccs::common"
   - "profile::ccs::graphical"
-  - "profile::core::auxtelmcm"
   - "profile::core::common"
   - "profile::core::debugutils"
 

@@ -27,6 +27,28 @@ describe 'auxtel-dc01.cp.lsst.org', :sitepp do
 
       it { is_expected.to compile.with_all_deps }
 
+      include_examples 'baremetal'
+      include_context 'with nm interface'
+      it { is_expected.to have_nm__connection_resource_count(2) }
+
+      %w[
+        eno2
+      ].each do |i|
+        context "with #{i}" do
+          let(:interface) { i }
+
+          it_behaves_like 'nm disabled interface'
+        end
+      end
+
+      context 'with eno1' do
+        let(:interface) { 'eno1' }
+
+        it_behaves_like 'nm enabled interface'
+        it_behaves_like 'nm dhcp interface'
+        it_behaves_like 'nm ethernet interface'
+      end
+
       it do
         is_expected.to contain_s3daemon__instance('cp-latiss').with(
           s3_endpoint_url: 'https://s3.cp.lsst.org',
@@ -43,8 +65,6 @@ describe 'auxtel-dc01.cp.lsst.org', :sitepp do
         )
       end
 
-      include_examples 'baremetal'
-
       it do
         is_expected.to contain_nfs__client__mount('/data').with(
           share: 'data',
@@ -60,6 +80,6 @@ describe 'auxtel-dc01.cp.lsst.org', :sitepp do
           atboot: true
         )
       end
-    end # on os
-  end # on_supported_os
-end # role
+    end
+  end # on os
+end # on_supported_os

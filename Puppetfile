@@ -17,7 +17,11 @@ mod 'lsst/ccs_hcu', '3.7.0'
 mod 'lsst/ccs_monit', '2.2.3'
 mod 'lsst/ccs_mrtg', '1.6.0'
 mod 'lsst/ccs_sal', '2.10.0'
+<<<<<<< HEAD
+mod 'lsst/ccs_software', '2.9.0'
+=======
 mod 'lsst/ccs_software', '2.8.1'
+>>>>>>> 72a4c869 (Update dependency lsst/ccs_sal to v2.10.0)
 mod 'lsst/cni', '3.4.0'
 mod 'lsst/daq', '2.5.0'
 mod 'lsst/dellperc', '2.0.0'

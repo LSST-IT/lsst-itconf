@@ -45,7 +45,9 @@ describe 'nfs3.cp.lsst.org', :sitepp do
             '139.229.160.0/24(rw,nohide,insecure,no_subtree_check,async,root_squash)',
             '139.229.165.0/24(rw,nohide,insecure,no_subtree_check,async,root_squash)',
             'azar03.cp.lsst.org(rw,nohide,insecure,no_subtree_check,async,root_squash)',
-            'comcam-archiver.cp.lsst.org(rw,nohide,insecure,no_subtree_check,async,no_root_squash)'
+            'comcam-archiver.cp.lsst.org(rw,nohide,insecure,no_subtree_check,async,no_root_squash)',
+            'comcam-dc01.cp.lsst.org(rw,nohide,insecure,no_subtree_check,async,no_root_squash)',
+            'comcam-vs01.cp.lsst.org(rw,nohide,insecure,no_subtree_check,async,no_root_squash)'
           )
       end
 

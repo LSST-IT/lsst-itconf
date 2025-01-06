@@ -49,13 +49,18 @@ nm::connections:
         id: "eno3"
         uuid: "5dcbb5a8-3425-4dff-a339-7a29e0b3a6c1"
         type: "ethernet"
-        autoconnect: "false"
         interface-name: "eno3"
       ethernet: {}
       ipv4:
-        method: "disabled"
+        address1: "139.229.181.74/29,139.229.181.78"
+        dns: "139.229.160.53;139.229.160.54;139.229.160.55;"
+        dns-search: "cp.lsst.org;"
+        method: "manual"
+        never-default: "true"
+        route1: "172.24.7.0/24,139.229.181.78"
       ipv6:
-        method: "disabled"
+        method: "ignore"
+      proxy: {}
   eno4:
     content:
       connection:

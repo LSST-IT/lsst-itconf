@@ -35,7 +35,6 @@ describe 'auxtel-fp01.cp.lsst.org', :sitepp do
 
       %w[
         eno2
-        eno3
       ].each do |i|
         context "with #{i}" do
           let(:interface) { i }
@@ -61,6 +60,18 @@ describe 'auxtel-fp01.cp.lsst.org', :sitepp do
         it_behaves_like 'nm bridge interface'
         it_behaves_like 'nm manual interface'
         it { expect(nm_keyfile['ipv4']['address1']).to eq('192.168.100.251/24') }
+      end
+
+      context 'with eno3' do
+        let(:interface) { 'eno3' }
+
+        it_behaves_like 'nm enabled interface'
+        it_behaves_like 'nm ethernet interface'
+        it { expect(nm_keyfile['ipv4']['address1']).to eq('139.229.181.74/29,139.229.181.78') }
+        it { expect(nm_keyfile['ipv4']['route1']).to eq('172.24.7.0/24,139.229.181.78') }
+        it { expect(nm_keyfile['ipv4']['dns']).to eq('139.229.160.53;139.229.160.54;139.229.160.55;') }
+        it { expect(nm_keyfile['ipv4']['dns-search']).to eq('cp.lsst.org;') }
+        it { expect(nm_keyfile['ipv4']['method']).to eq('manual') }
       end
 
       context 'with eno4' do

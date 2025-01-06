@@ -36,6 +36,18 @@ describe "#{role} role" do
           include_examples 'ftdi'
           include_examples 'dco'
           include_examples 'add_usb'
+
+          it do
+            is_expected.to contain_file('/boot/config.txt').with(
+              ensure: 'file',
+              mode: '0755',
+              content: <<~CONTENT
+                [all]
+                dtoverlay=disable-bt
+                dtparam=audio=on
+              CONTENT
+            )
+          end
         end # host
       end # lsst_sites
     end # on os

@@ -7,3 +7,12 @@ classes:
   - "profile::pi::ftdi"
   - "profile::pi::pigpio"
   - "profile::ts::dco"
+
+files:
+  /boot/config.txt:
+    ensure: "file"
+    mode: "0755"
+    content: |
+      [all]
+      dtoverlay=disable-bt
+      dtparam=audio=on

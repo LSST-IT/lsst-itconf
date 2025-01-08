@@ -57,6 +57,14 @@ describe 'love1.tu.lsst.org', :sitepp do
         it { expect(nm_keyfile['ipv4']['route1']).to eq('140.252.147.16/28,140.252.147.129') }
         it { expect(nm_keyfile['ipv4']['route2']).to eq('140.252.147.48/28,140.252.147.129') }
       end
+
+      it do
+        is_expected.to contain_nfs__client__mount('/net/project').with(
+          share: 'project',
+          server: 'nfs-project.tu.lsst.org',
+          atboot: true
+        )
+      end
     end # on os
   end # on_supported_os
 end

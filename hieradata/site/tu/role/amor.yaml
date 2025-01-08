@@ -13,3 +13,7 @@ nfs::client_mounts:
     share: "scratch"
     server: "nfs-scratch.tu.lsst.org"
     atboot: true
+  /net/project:
+    share: "project"
+    server: "nfs-project.tu.lsst.org"
+    atboot: true

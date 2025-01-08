@@ -4,7 +4,7 @@
 class profile::pi::pigpio {
   yumrepo { 'raspberry-pi':
     descr               => 'Copr repo for raspberry-pi owned by pemensik',
-    baseurl             => 'https://download.copr.fedorainfracloud.org/results/pemensik/raspberry-pi/fedora-37-$basearch/',
+    baseurl             => 'https://download.copr.fedorainfracloud.org/results/pemensik/raspberry-pi/fedora-39-$basearch/',
     skip_if_unavailable => 'true',
     gpgcheck            => '1',
     gpgkey              => 'https://download.copr.fedorainfracloud.org/results/pemensik/raspberry-pi/pubkey.gpg',

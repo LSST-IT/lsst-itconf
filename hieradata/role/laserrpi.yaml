@@ -4,8 +4,8 @@ classes:
   - "profile::core::docker"
   - "profile::core::gpio"
   - "profile::pi::add_usb"
-  - "profile::pi::ftdi"
   - "profile::pi::pigpio"
+  - "profile::pi::ttyusb"
   - "profile::ts::dco"
 
 files:

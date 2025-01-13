@@ -33,7 +33,7 @@ describe "#{role} role" do
           include_examples 'docker'
           include_examples('gpio', os_facts:)
           include_examples 'pigpio'
-          include_examples 'ftdi'
+          include_examples 'ttyusb'
           include_examples 'dco'
           include_examples 'add_usb'
 

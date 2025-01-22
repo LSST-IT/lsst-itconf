@@ -1,6 +1,15 @@
 ---
-network::interfaces_hash:
-  eth0:
-    bootproto: "dhcp"
-    onboot: "yes"
-    type: "Ethernet"
+nm::connections:
+  ens192:
+    content:
+      connection:
+        id: "ens192"
+        uuid: "03da7500-2101-c722-2438-d0d006c28c73"
+        type: "ethernet"
+        interface-name: "ens192"
+      ethernet: {}
+      ipv4:
+        method: "auto"
+      ipv6:
+        method: "disabled"
+      proxy: {}

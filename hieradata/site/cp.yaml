@@ -54,6 +54,8 @@ profile::core::docker::version: "24.0.9"
 
 ccs_sal::dds: false
 ccs_sal::kafka: true
+ccs_sal::kafka_broker_address: "sasquatch-summit-kafka-bootstrap.lsst.codes:9094"
+ccs_sal::kafka_registry_url: "https://summit-lsp.lsst.codes/schema-registry"
 
 ccs_sal::lfa:
   id: "%{alias('ccs_sal::lfa::id')}"

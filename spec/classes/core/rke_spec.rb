@@ -26,8 +26,8 @@ describe 'profile::core::rke' do
 
         it do
           is_expected.to contain_class('rke').with(
-            version: '1.6.2',
-            checksum: '68608a97432b4472d3e8f850a7bde0119582ea80fbb9ead923cd831ca97db1d7'
+            version: '1.6.5',
+            checksum: '80694373496abd5033cb97c2512f2c36c933d301179881e1d28bf7b78efab3e7'
           )
         end
       end

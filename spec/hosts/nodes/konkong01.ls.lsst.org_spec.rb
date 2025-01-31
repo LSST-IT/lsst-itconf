@@ -65,13 +65,12 @@ describe 'konkong01.ls.lsst.org', :sitepp do
       it { is_expected.to contain_class('cni::plugins::dhcp') }
       it { is_expected.to contain_class('profile::core::ospl').with_enable_rundir(true) }
 
-      it { is_expected.to have_nm__connection_resource_count(7) }
+      it { is_expected.to have_nm__connection_resource_count(10) }
 
       %w[
         eno1np0
         eno2np1
         enp4s0f3u2u2c2
-        enp129s0f1
       ].each do |i|
         context "with #{i}" do
           let(:interface) { i }
@@ -80,20 +79,48 @@ describe 'konkong01.ls.lsst.org', :sitepp do
         end
       end
 
-      context 'with enp129s0f0' do
-        let(:interface) { 'enp129s0f0' }
+      %w[
+        enp129s0f0
+        enp129s0f1
+      ].each do |i|
+        context "with #{i}" do
+          let(:interface) { i }
 
-        it_behaves_like 'nm enabled interface'
-        it_behaves_like 'nm dhcp interface'
-        it_behaves_like 'nm ethernet interface'
+          it_behaves_like 'nm enabled interface'
+          it_behaves_like 'nm ethernet interface'
+          it_behaves_like 'nm bond slave interface', master: 'bond0'
+        end
       end
 
-      context 'with enp129s0f1.2505' do
-        let(:interface) { 'enp129s0f1.2505' }
+      context 'with bond0' do
+        let(:interface) { 'bond0' }
 
         it_behaves_like 'nm enabled interface'
-        it_behaves_like 'nm vlan interface', id: 2505, parent: 'enp129s0f1'
-        it_behaves_like 'nm bridge slave interface', master: 'br2505'
+        it_behaves_like 'nm bond interface'
+        it_behaves_like 'nm no-ip interface'
+        it { expect(nm_keyfile['bond']['xmit_hash_policy']).to eq('layer3+4') }
+      end
+
+      %w[
+        2501
+        2505
+      ].each do |vlan|
+        iface = "bond0.#{vlan}"
+        context "with #{iface}" do
+          let(:interface) { iface }
+
+          it_behaves_like 'nm enabled interface'
+          it_behaves_like 'nm vlan interface', id: vlan.to_i, parent: 'bond0'
+          it_behaves_like 'nm bridge slave interface', master: "br#{vlan}"
+        end
+      end
+
+      context 'with br2501' do
+        let(:interface) { 'br2501' }
+
+        it_behaves_like 'nm enabled interface'
+        it_behaves_like 'nm bridge interface'
+        it_behaves_like 'nm dhcp interface'
       end
 
       context 'with br2505' do

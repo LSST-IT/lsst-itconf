@@ -6,6 +6,10 @@ clustershell::groupmembers:
 profile::core::ospl::enable_rundir: true
 profile::core::k8snode::enable_dhcp: true
 tuned::active_profile: "latency-performance"
+nm::conf:
+  device:
+    keep-configuration: "no"
+    allowed-connections: "except:origin:nm-initrd-generator"
 nm::connections:
   eno1np0:
     content:

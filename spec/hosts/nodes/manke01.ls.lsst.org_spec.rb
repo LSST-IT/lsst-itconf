@@ -19,9 +19,9 @@ describe 'manke01.ls.lsst.org', :sitepp do
       end
       let(:node_params) do
         {
-          role: 'rke',
-          site: 'ls',
+          role: 'rke2server',
           cluster: 'manke',
+          site: 'ls',
         }
       end
 
@@ -30,7 +30,13 @@ describe 'manke01.ls.lsst.org', :sitepp do
       include_examples 'baremetal'
       include_context 'with nm interface'
       include_examples 'ceph cluster'
-      include_examples 'docker', docker_version: '24.0.9'
+      include_examples 'lhn sysctls'
+
+      it do
+        expect(catalogue.resource('class', 'rke2')[:config]).to include(
+          'node-label' => ['role=storage-node']
+        )
+      end
 
       it do
         is_expected.to contain_class('profile::core::sysctl::rp_filter').with_enable(false)
@@ -48,17 +54,10 @@ describe 'manke01.ls.lsst.org', :sitepp do
       end
 
       it do
-        is_expected.to contain_class('rke').with(
-          version: '1.6.5',
-          checksum: '80694373496abd5033cb97c2512f2c36c933d301179881e1d28bf7b78efab3e7'
-        )
-      end
-
-      it do
-        is_expected.to contain_class('cni::plugins').with(
-          version: '1.2.0',
-          checksum: 'f3a841324845ca6bf0d4091b4fc7f97e18a623172158b72fc3fdcdb9d42d2d37',
-          enable: ['macvlan']
+        is_expected.to contain_class('rke2').with(
+          node_type: 'server',
+          release_series: '1.30',
+          version: '1.30.7~rke2r1'
         )
       end
 

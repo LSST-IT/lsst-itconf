@@ -1,0 +1,15 @@
+---
+nm::connections:
+  ens192:
+    content:
+      connection:
+        id: "ens192"
+        uuid: "cd559ef5-6e19-4a27-a924-4c86e5c77304"
+        type: "ethernet"
+        interface-name: "ens192"
+      ethernet: {}
+      ipv4:
+        method: "auto"
+      ipv6:
+        method: "disable"
+      proxy: {}

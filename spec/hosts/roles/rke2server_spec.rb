@@ -23,7 +23,12 @@ shared_examples 'generic rke2server' do |os_facts:, site:|
 
   it do
     expect(catalogue.resource('class', 'rke2')[:config]).to include(
-      'disable' => ['rke2-ingress-nginx']
+      'disable' => %w[
+        rke2-ingress-nginx
+        rke2-snapshot-controller
+        rke2-snapshot-controller-crd
+        rke2-snapshot-validation-webhook
+      ]
     )
   end
 

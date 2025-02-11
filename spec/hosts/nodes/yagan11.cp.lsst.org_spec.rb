@@ -19,7 +19,7 @@ describe 'yagan11.cp.lsst.org', :sitepp do
       end
       let(:node_params) do
         {
-          role: 'rke',
+          role: 'rke2agent',
           site: 'cp',
           cluster: 'yagan',
           variant: '1114s',
@@ -31,6 +31,13 @@ describe 'yagan11.cp.lsst.org', :sitepp do
 
       include_examples 'baremetal'
       include_context 'with nm interface'
+      include_examples 'ceph cluster'
+
+      it do
+        expect(catalogue.resource('class', 'rke2')[:config]).to include(
+          'node-label' => ['role=storage-node']
+        )
+      end
 
       it do
         is_expected.to contain_class('profile::core::sysctl::rp_filter').with_enable(false)
@@ -48,17 +55,19 @@ describe 'yagan11.cp.lsst.org', :sitepp do
       end
 
       it do
-        is_expected.to contain_class('rke').with(
-          version: '1.6.5',
-          checksum: '80694373496abd5033cb97c2512f2c36c933d301179881e1d28bf7b78efab3e7'
+        is_expected.to contain_class('rke2').with(
+          node_type: 'agent',
+          release_series: '1.30',
+          version: '1.30.7~rke2r1'
         )
       end
 
       it do
-        is_expected.to contain_class('cni::plugins').with(
-          version: '1.2.0',
-          checksum: 'f3a841324845ca6bf0d4091b4fc7f97e18a623172158b72fc3fdcdb9d42d2d37',
-          enable: %w[macvlan static]
+        expect(catalogue.resource('class', 'nm')[:conf]).to include(
+          'device' => {
+            'keep-configuration' => 'no',
+            'allowed-connections' => 'except:origin:nm-initrd-generator',
+          }
         )
       end
 

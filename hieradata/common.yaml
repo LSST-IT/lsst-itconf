@@ -587,6 +587,9 @@ rke2::config:
     - "%{::cluster}.%{::site}.lsst.org"
   disable:
     - "rke2-ingress-nginx"
+    - "rke2-snapshot-controller"
+    - "rke2-snapshot-controller-crd"
+    - "rke2-snapshot-validation-webhook"
   disable-cloud-controller: true
 
 profile::core::kernel::pquota::ensure: "absent"  # temporary until profile::core::kernel::pquota profile is removed from roles which don't need it

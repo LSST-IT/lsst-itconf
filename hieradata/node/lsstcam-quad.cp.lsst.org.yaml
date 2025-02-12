@@ -31,6 +31,8 @@ nm::connections:
         method: "disabled"
       proxy: {}
 
+ccs_hcu::quadbox: true
+
 ccs_software::services:
   prod:
     - "mpm"

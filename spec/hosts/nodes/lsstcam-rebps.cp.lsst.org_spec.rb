@@ -49,6 +49,8 @@ describe 'lsstcam-rebps.cp.lsst.org', :sitepp do
         it_behaves_like 'nm manual interface'
         it { expect(nm_keyfile['ipv4']['address1']).to eq('192.168.1.121/24') }
       end
+
+      it { is_expected.to contain_file('/usr/local/bin/CCS_QUADBOX_POWEROFF') }
     end # on os
   end # on_supported_os
 end

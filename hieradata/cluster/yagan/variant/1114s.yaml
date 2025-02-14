@@ -33,8 +33,6 @@ nm::connections:
         uuid: "a5075916-3795-4687-b6d3-69ffafe44052"
         type: "bond"
         interface-name: "bond0"
-      ethernet:
-        cloned-mac-address: "%{facts.networking.interfaces.eno1np0.mac}"
       bond:
         miimon: "100"
         mode: "802.3ad"

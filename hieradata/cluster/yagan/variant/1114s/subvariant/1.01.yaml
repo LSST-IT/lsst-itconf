@@ -33,3 +33,7 @@ nm::connections:
         master: "bond0"
         slave-type: "bond"
       ethernet: {}
+  bond0:
+    content:
+      ethernet:
+        cloned-mac-address: "%{facts.networking.interfaces.enp1s0f0.mac}"

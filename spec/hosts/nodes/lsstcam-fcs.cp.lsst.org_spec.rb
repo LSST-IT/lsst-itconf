@@ -52,6 +52,8 @@ describe 'lsstcam-fcs.cp.lsst.org', :sitepp do
         it { expect(nm_keyfile['ipv4']['dns']).to eq('139.229.160.53;139.229.160.54;139.229.160.55;') }
         it { expect(nm_keyfile['ipv4']['dns-search']).to eq('cp.lsst.org;') }
       end
+
+      it { is_expected.to contain_file('/usr/local/bin/CCS_QUADBOX_POWEROFF') }
     end # on os
   end # on_supported_os
 end
